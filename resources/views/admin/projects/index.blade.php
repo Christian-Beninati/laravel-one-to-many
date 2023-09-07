@@ -25,9 +25,7 @@
                 <tr>
                     <th scope="row" class="align-middle">{{ $project->id }}</th>
                     <td class="align-middle">{{ $project->title }}</td>
-                    <td class="align-middle"><span
-                            class="badge"style="background:{{ $project->type->color }}">{{ $project->type->label }}</span>
-                    </td>
+                    <td class="align-middle">{{ $project->type?->label }}</td>
                     <td class="align-middle">{{ $project->url }}</td>
                     <td class="align-middle">{{ $project->created_at }}</td>
                     <td class="align-middle">{{ $project->updated_at }}</td>

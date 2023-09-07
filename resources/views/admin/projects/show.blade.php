@@ -18,6 +18,8 @@
     <div>
         <strong>Created on:</strong> {{ $project->created_at }}
         <strong>Last edit:</strong> {{ $project->updated_at }}
+        <strong>Type:</strong> {{ $project->type ? $project->type->label : 'None' }}
+
     </div>
 
     <hr>
