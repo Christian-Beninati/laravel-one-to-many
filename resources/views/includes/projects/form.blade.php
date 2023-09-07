@@ -34,6 +34,25 @@
                 </div>
             @enderror
         </div>
+
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Type</label>
+                <select
+                    class="form-select @error('type_id') is-invalid @elseif(old('description')) is-valid @enderror"
+                    id="type" name="type_id">
+                    <option value="">None</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->label }} </option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        </div>
     </div>
     <div class="col-12">
         <div class="mb-3">

@@ -11,7 +11,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'url', 'image', 'description'];
+    protected $fillable = ['title', 'url', 'image', 'description', 'type_id'];
 
 
     public function getImagePath()
