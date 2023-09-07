@@ -27,7 +27,7 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
-        $types = Type::select('id', 'label')->get();
+        $types = Type::all();
 
         return view('admin.projects.create', compact('project', 'types'));
     }
@@ -43,6 +43,7 @@ class ProjectController extends Controller
                 'url' => 'required|unique:projects|url:http,https',
                 'image' => 'nullable|image:jpg,jpeg,png',
                 'description' => 'nullable|string',
+                'type_id' => 'nullable|exists:types,id'
             ],
             [
                 'title.required' => ' Title is required',
@@ -52,6 +53,7 @@ class ProjectController extends Controller
                 'url.url' => ' The link is not valid',
                 'description.required' => 'There can be no project without a description',
                 'image.image' => 'The uploaded file is not valid',
+                'type_id.exists' => 'The type entered is non-existent'
             ]
         );
 
@@ -101,6 +103,8 @@ class ProjectController extends Controller
                 'url' => ['required', 'url:http,https', Rule::unique('projects')->ignore($project->id)],
                 'image' => 'nullable|image:jpg,jpeg,png',
                 'description' => 'nullable|string',
+                'type_id' => 'nullable|exists:types,id'
+
             ],
             [
                 'title.required' => ' Title is required',
@@ -110,6 +114,8 @@ class ProjectController extends Controller
                 'url.url' => ' The link is not valid',
                 'description.required' => 'There can be no project without a description',
                 'image.image' => 'The uploaded file is not valid',
+                'type_id.exists' => 'The type entered is non-existent'
+
             ]
         );
 

@@ -43,7 +43,8 @@
                     id="type" name="type_id">
                     <option value="">None</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->label }} </option>
+                        <option @if (old('type_id', $project->type_id) == $type->id) selected @endif value="{{ $type->id }}">
+                            {{ $type->label }} </option>
                     @endforeach
                 </select>
                 @error('type_id')
